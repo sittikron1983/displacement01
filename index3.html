@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Velocity Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f5f9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .calculator {
+            max-width: 420px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #243b53;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #bcccdc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 12px;
+            background-color: #2878d0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #185ca8;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #167344;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h2>Find the final velocity</h2>
+
+        <p>Enter parameters:</p>
+
+        <form id="velocityForm">
+            <label for="u">Initial velocity, u (m/s)</label>
+            <input type="number" id="u" step="any" value="5" required>
+
+            <label for="a">Constant acceleration, a (m/s²)</label>
+            <input type="number" id="a" step="any" value="1.5" required>
+
+            <label for="t">Elapsed time, t (s)</label>
+            <input type="number" id="t" step="any" value="2" required>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        <p id="result" aria-live="polite"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById("velocityForm");
+        const result = document.getElementById("result");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const u = Number(document.getElementById("u").value);
+            const a = Number(document.getElementById("a").value);
+            const t = Number(document.getElementById("t").value);
+
+            const v = u + a * t;
+
+            result.textContent = "Final velocity, v = " + v + " m/s";
+        });
+    </script>
+</body>
+</html>
